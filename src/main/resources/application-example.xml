@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+           
+    <context:component-scan base-package="com.example.springcore"/>
+
+	<context:property-placeholder location="classpath:car.properties" file-encoding="utf8"/>
+	<bean id="utf8" class="java.lang.String">
+		<constructor-arg value="utf-8"></constructor-arg>
+	</bean>
+	
+	<bean id="car" class="com.example.springcore.domain.Car" p:name="${name}" p:color="${color}" p:price="${price}" />
+
+	<bean id="goods" class="com.example.springcore.domain.Goods" >
+		<constructor-arg name="name" value="oil"></constructor-arg>
+		<constructor-arg name="level" value="3"></constructor-arg>
+		<constructor-arg name="price" value="25.30"></constructor-arg>
+	</bean>
+	
+	<bean id="good" class="com.example.springcore.domain.Goods">
+		<property name="name" value="fish"></property>
+		<property name="level" value="5"></property>
+		<property name="price" value="20.50"></property>
+	</bean>
+	
+	<bean id="personService" class="com.example.springcore.service.impl.PersonService">
+		<property name="message" value="Hi,this is spring core example."></property>
+	</bean>
+	
+
+</beans>
